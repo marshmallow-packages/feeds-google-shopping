@@ -2,13 +2,13 @@
 
 namespace Marshmallow\Feeds\GoogleShopping;
 
-use Marshmallow\Priceable\Models\Price;
-use Marshmallow\Product\Models\Product;
-use Marshmallow\Feeds\GoogleShopping\FeedProduct\Tax;
-use Marshmallow\Feeds\GoogleShopping\FeedProduct\Shipping;
+use Marshmallow\Datasets\GoogleProductCategories\Models\GoogleProductCategory;
 use Marshmallow\Feeds\GoogleShopping\Exception\InvalidArgumentException;
 use Marshmallow\Feeds\GoogleShopping\FeedProduct\Availability\Availability;
-use Marshmallow\Datasets\GoogleProductCategories\Models\GoogleProductCategory;
+use Marshmallow\Feeds\GoogleShopping\FeedProduct\Shipping;
+use Marshmallow\Feeds\GoogleShopping\FeedProduct\Tax;
+use Marshmallow\Priceable\Models\Price;
+use Marshmallow\Product\Models\Product;
 
 class FeedProduct
 {
@@ -24,6 +24,7 @@ class FeedProduct
     public function setId($id)
     {
         $this->setAttribute('id', $id);
+
         return $this;
     }
 
@@ -37,6 +38,7 @@ class FeedProduct
     public function setTitle($title)
     {
         $this->setAttribute('title', $title, true);
+
         return $this;
     }
 
@@ -50,6 +52,7 @@ class FeedProduct
     public function setDescription($title)
     {
         $this->setAttribute('description', $title, true);
+
         return $this;
     }
 
@@ -63,6 +66,7 @@ class FeedProduct
     public function setLink($link)
     {
         $this->setAttribute('link', $link, true);
+
         return $this;
     }
 
@@ -76,6 +80,7 @@ class FeedProduct
     public function setMobileLink($link)
     {
         $this->setAttribute('mobile_link', $link, true);
+
         return $this;
     }
 
@@ -89,6 +94,7 @@ class FeedProduct
     public function setImage($imageUrl)
     {
         $this->setAttribute('image_link', $imageUrl, true);
+
         return $this;
     }
 
@@ -102,6 +108,7 @@ class FeedProduct
     public function setAdditionalImage($imageUrl)
     {
         $this->setAttribute('additional_image_link', $imageUrl, true);
+
         return $this;
     }
 
@@ -115,6 +122,7 @@ class FeedProduct
     public function addAdditionalImage($imageUrl)
     {
         $this->addAttribute('additional_image_link', $imageUrl, true);
+
         return $this;
     }
 
@@ -131,13 +139,14 @@ class FeedProduct
         $availability = Availability::IN_STOCK;
 
         // DO A STOCK CHECK HERE
-        // 
-        if (!in_array($availability, [
+        //
+        if (! in_array($availability, [
             Availability::IN_STOCK, Availability::OUT_OF_STOCK, Availability::PREORDER,
         ])) {
             throw new InvalidArgumentException("Invalid availability property");
         }
         $this->setAttribute('availability', $availability, false);
+
         return $this;
     }
 
@@ -151,6 +160,7 @@ class FeedProduct
     public function setPrice($price)
     {
         $this->setAttribute('price', $price, false);
+
         return $this;
     }
 
@@ -164,6 +174,7 @@ class FeedProduct
     public function setSalePrice($price)
     {
         $this->setAttribute('sale_price', $price, false);
+
         return $this;
     }
 
@@ -177,6 +188,7 @@ class FeedProduct
     public function setGoogleCategory(GoogleProductCategory $category)
     {
         $this->setAttribute('google_product_category', $category->id, false);
+
         return $this;
     }
 
@@ -190,6 +202,7 @@ class FeedProduct
     public function setProductType($product_type)
     {
         $this->setAttribute('product_type', $product_type, false);
+
         return $this;
     }
 
@@ -203,6 +216,7 @@ class FeedProduct
     public function setBrand($brand)
     {
         $this->setAttribute('brand', $brand, false);
+
         return $this;
     }
 
@@ -216,6 +230,7 @@ class FeedProduct
     public function setGtin($gtin)
     {
         $this->setAttribute('gtin', $gtin, false);
+
         return $this;
     }
 
@@ -229,6 +244,7 @@ class FeedProduct
     public function setMpn($mpn)
     {
         $this->setAttribute('mpn', $mpn, false);
+
         return $this;
     }
 
@@ -243,10 +259,11 @@ class FeedProduct
     public function setIdentifierExists($identifierExists)
     {
         $identifierExists = strtolower($identifierExists);
-        if (!in_array($identifierExists, ['yes', 'no'])) {
+        if (! in_array($identifierExists, ['yes', 'no'])) {
             throw new InvalidArgumentException("identifier_exists property should be one of 'yes' or 'no'");
         }
         $this->setAttribute('identifier_exists', $identifierExists, false);
+
         return $this;
     }
 
@@ -260,12 +277,13 @@ class FeedProduct
      */
     public function setCondition($condition)
     {
-        if (!in_array($condition, [
+        if (! in_array($condition, [
             'new', 'refurbished', 'used',
         ])) {
             throw new InvalidArgumentException("Invalid condition property");
         }
         $this->setAttribute('condition', $condition, false);
+
         return $this;
     }
 
@@ -279,6 +297,7 @@ class FeedProduct
     public function setAdult($adult)
     {
         $this->setAttribute('adult', $adult ? 'yes' : 'no', false);
+
         return $this;
     }
 
@@ -292,6 +311,7 @@ class FeedProduct
     public function setColor($color)
     {
         $this->setAttribute('color', $color, false);
+
         return $this;
     }
 
@@ -305,6 +325,7 @@ class FeedProduct
     public function setMaterial($material)
     {
         $this->setAttribute('material', $material, false);
+
         return $this;
     }
 
@@ -318,6 +339,7 @@ class FeedProduct
     public function setSize($size)
     {
         $this->setAttribute('size', $size, false);
+
         return $this;
     }
 
@@ -330,6 +352,7 @@ class FeedProduct
     {
         $propertyBag = $shipping->getPropertyBag()->setName('shipping');
         $this->setAttribute('shipping', $propertyBag);
+
         return $this;
     }
 
@@ -341,6 +364,7 @@ class FeedProduct
 
         $propertyBag = $tax->getPropertyBag()->setName('tax');
         $this->setAttribute('tax', $propertyBag);
+
         return $this;
     }
 
@@ -351,9 +375,9 @@ class FeedProduct
      */
     public function getXmlStructure($namespace)
     {
-        $xmlStructure = array(
+        $xmlStructure = [
             'item' => $this->getPropertiesXmlStructure($namespace),
-        );
+        ];
 
         return $xmlStructure;
     }

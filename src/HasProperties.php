@@ -43,17 +43,20 @@ trait HasProperties
     {
         $productProperty = new FeedProductProperty($name, $value, $isCData);
         $attributeName = strtolower($name);
-        if (!isset($this->attributes[$attributeName])) {
+        if (! isset($this->attributes[$attributeName])) {
             $this->attributes[$attributeName] = [$productProperty];
+
             return $this;
         }
 
-        if (!is_array($this->attributes[$attributeName])) {
+        if (! is_array($this->attributes[$attributeName])) {
             $this->attributes[$attributeName] = [$this->attributes[$attributeName], $productProperty];
+
             return $this;
         }
 
         $this->attributes[$attributeName][] = $productProperty;
+
         return $this;
     }
 

@@ -11,12 +11,14 @@ class Tax
     public function setCountry($countryCode)
     {
         $this->setAttribute('country', $countryCode, false);
+
         return $this;
     }
 
     public function setRate($rate)
     {
         $this->setAttribute('rate', $rate, false);
+
         return $this;
     }
 }

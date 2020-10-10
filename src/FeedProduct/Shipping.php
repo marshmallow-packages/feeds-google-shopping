@@ -23,6 +23,7 @@ class Shipping
     public function setCountry($countryCode)
     {
         $this->setAttribute('country', $countryCode, false);
+
         return $this;
     }
 
@@ -36,6 +37,7 @@ class Shipping
     public function setRegion($region)
     {
         $this->setAttribute('region', $region, false);
+
         return $this;
     }
 
@@ -49,6 +51,7 @@ class Shipping
     public function setPostalCode($postalCode)
     {
         $this->setAttribute('postal_code', $postalCode, false);
+
         return $this;
     }
 
@@ -62,6 +65,7 @@ class Shipping
     public function setLocationId($locationId)
     {
         $this->setAttribute('location_id', $locationId, false);
+
         return $this;
     }
 
@@ -75,6 +79,7 @@ class Shipping
     public function setLocationGroupName($locationGroupName)
     {
         $this->setAttribute('location_group_name', $locationGroupName, false);
+
         return $this;
     }
 
@@ -88,6 +93,7 @@ class Shipping
     public function setService($service)
     {
         $this->setAttribute('service', $service, false);
+
         return $this;
     }
 
@@ -101,6 +107,7 @@ class Shipping
     public function setPrice($price)
     {
         $this->setAttribute('price', $price, false);
+
         return $this;
     }
 }

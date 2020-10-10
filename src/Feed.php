@@ -72,21 +72,21 @@ class Feed
         $namespace = '{'.static::GOOGLE_MERCHANT_XML_NAMESPACE.'}';
         $xmlService->namespaceMap[static::GOOGLE_MERCHANT_XML_NAMESPACE] = 'g';
 
-        $xmlStructure = array('channel' => array());
+        $xmlStructure = ['channel' => []];
 
-        if (!empty($this->title)) {
+        if (! empty($this->title)) {
             $xmlStructure['channel'][] = [
                 'title' => $this->title,
             ];
         }
 
-        if (!empty($this->link)) {
+        if (! empty($this->link)) {
             $xmlStructure['channel'][] = [
                 'link' => $this->link,
             ];
         }
 
-        if (!empty($this->description)) {
+        if (! empty($this->description)) {
             $xmlStructure['channel'][] = [
                 'description' => $this->description,
             ];
