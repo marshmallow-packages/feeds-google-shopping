@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": "^7.1|^8.0",
-    "sabre/xml": "^1.5 || ^2.0",
+    "sabre/xml": "^4.0.0",
     "marshmallow/dataset-google-product-categories": "^1.0"
   },
   "autoload": {
